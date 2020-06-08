@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>DV Project</title>
+</head>
+<body>
+    <div id="viz_modal" style="width: 95%; left: 2%;" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 100%; max-width: 100%;">
+            <div class="modal-content" style="width: 100%; height: 98%; overflow: auto">
+                <svg id="modal_svg" style="width: 105%; height: 1300px"></svg>
+            </div>
+        </div>
+    </div>
+    
+    <div id="label_modal" class="modal fade hide" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div id="doc_disc"></div>
+                <div id="label_l">
+                    <div class="input-group mb-3" id="new_label_in">
+                        <input type="text" class="form-control" placeholder="New Label Name" aria-label="New Label Name" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Add Label</button>
+                        </div>
+                    </div>
+                    <div id="la_lis">
+                        <!-- <div class="label_title">Sports</div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary">Yes</button>
+                            <button type="button" class="btn btn-light">No</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+              
+    <div class="container" id="label_list">
+        <div class="title_bar"><span style="margin-left: 10px; padding-top: 5px">Label List</span></div>
+        <div style="width: 100%; height: 92%; overflow: auto;"><svg id="l_l_svg" style="height: 150%; width: 100%;"></svg></div>
+    </div>
+    <div class="container" id="word_cloud">
+        <div class="title_bar"><span style="margin-left: 10px; padding-top: 5px">Word Cloud</span></div>
+        <svg id="w_c_inside" style="height: 92%; width: 100%;"></svg>
+    </div>
+    <div class="container" id="scatter_plot" >
+        <ul class="nav nav-pills" id="pills-tab" role="tablist" style="font-size: 13px;height: 30px; background-color: #007bff; padding-top: 2px; padding-left: 5px;">
+            <li class="nav-item" style="height: 28px;">
+              <a class="nav-link active" style="height: 28px; padding-top: 2px;" id="pills-home-tab" data-toggle="pill" href="#pills-topic" role="tab" aria-controls="pills-home" aria-selected="true">Topic Scatter Plot</a>
+            </li>
+            <li class="nav-item" style="height: 28px;">
+                <a class="nav-link" style="height: 28px;  padding-top: 2px;" id="pills-profile-tab" data-toggle="pill" href="#pills-dendo" role="tab" aria-controls="pills-profile" aria-selected="false">Dendrogram</a>
+            </li>
+            <li class="nav-item" style="height: 28px;">
+                <a class="nav-link" style="height: 28px;  padding-top: 2px;" id="pills-profile-tab" data-toggle="pill" href="#pills-treem" role="tab" aria-controls="pills-profile" aria-selected="false">Treemap</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent" style="height: 100%;">
+            <div class="tab-pane fade show active" style="height: 100%;" id="pills-topic" role="tabpanel" aria-labelledby="pills-home-tab">
+                <svg id="topic_viz" style="height: 92%; width: 100%;"></svg>
+            </div>
+            <div class="tab-pane fade" id="pills-dendo"  style="height: 100%; overflow: auto" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <svg id="dendo_viz" style="height: 1100px; width: 1100px;">
+
+                </svg>
+            </div>
+            <div class="tab-pane fade" id="pills-treem"  style="height: 100%; overflow: auto" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <svg id="treem_viz" style="height: 500px; width: 700px;">
+
+                </svg>
+            </div>
+        </div>
+        <button type="button" onClick="show_modal()" class="btn btn-primary btn-circle btn-sm" style="position: absolute; bottom: 20px; right: 20px">full</button>
+    </div>
+    <div class="container" id="topic_weight">
+        <div class="title_bar"><span style="margin-left: 10px; padding-top: 5px">Topic Weight</span></div>
+        <div style="height: 92%; width: 100%; overflow: auto;"><svg id="t_w_svg" style="height: 250%; width: 100%;"></svg></div>
+    </div>
+    <div class="container" id="text_list">
+        <div class="title_bar"><span style="margin-left: 10px; padding-top: 5px">Text List</span></div>
+        <div class="text_list" style="width: 100%; height: 96%; overflow-y: auto" id="text_list_inside"></div>
+    </div>
+    <button type="button" onClick="toggle_ds()" class="btn btn-primary btn-circle" style="position: absolute; bottom: 20px; right: 20px">Toggle Dataset</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="Scripts/d3/d3.queue.js"></script>
+    <!-- <script src="scripts/d3/d3.scale.chromatic.js"></script>    -->
+    <script src="Scripts/d3/d3.topojson.js"></script>
+    <script src="Scripts/d3/d3.v4.js"></script>
+    <script src="./Scripts/d3/d3.layout.cloud.js"></script>
+    <script src="Scripts/index.js"></script>
+</body>
+</html>

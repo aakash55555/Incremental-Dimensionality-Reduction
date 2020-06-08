@@ -1,0 +1,159 @@
+body{
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+}
+
+.scrollable-element {
+    scrollbar-width: thin;
+}
+
+.container{
+    border: 0.5px solid #007bff;
+    border-radius: 3px;
+    position: fixed;
+    padding: 0;
+}
+
+#label_list{
+    width: 25vw;
+    height: 50vh;
+}
+
+#word_cloud{
+    width: 25vw;
+    height: 50vh;
+    top: 50vh;
+}
+
+#scatter_plot{
+    width: 50vw;
+    height: 65vh;
+    left: 25vw;
+}
+
+#topic_weight{
+    width: 50vw;
+    height: 35vh;
+    left: 25vw;
+    top: 65vh;
+}
+
+#text_list{
+    width: 25vw;
+    height: 100vh;
+    left: 75vw;
+    /* overflow-y: scroll */
+}
+
+.title_bar{
+    width: 100%;
+    height: 30px;
+    font-family: 'Lato', sans-serif;
+    background-color: #007bff;
+    color: white;
+    font-size: 13px;
+    padding-top: 2px;
+}
+
+.nav-pills .nav-link.active{
+    background-color: white;
+    color: #007bff;
+}
+
+.nav-pills .nav-link{
+    color: white;
+}
+
+.nav-pills .nav-link.focus{
+    border: none;
+}
+
+.btn-circle.btn-sm { 
+    width: 40px; 
+    height: 40px; 
+    padding: 6px 0px; 
+    border-radius: 50%; 
+    font-size: 8px; 
+    text-align: center; 
+    opacity: 0.5;
+} 
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 150px;					
+    padding: 5px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+text {
+    pointer-events: none;
+  }
+  .grandparent text {
+    font-weight: bold;
+  }
+  rect {
+    stroke: #fff;
+    stroke-width: 1px;
+  }
+  rect.parent,
+  .grandparent rect {
+    stroke-width: 3px;
+  }
+  .grandparent:hover rect {
+    fill: grey;
+  }
+  .children rect.parent,
+  .grandparent rect {
+    cursor: pointer;
+  }
+  .children rect.child {
+    opacity: 0;
+  }
+  .children:hover rect.child {
+    opacity: 1;
+    stroke-width: 1px;
+  }
+  .children:hover rect.parent {
+    opacity: 0;
+  }
+  .legend {
+    margin-bottom:8px !important;
+  }
+  .legend rect {
+    stroke-width: 0px;
+  }
+  .legend text {
+    text-anchor: middle;
+    pointer-events: auto;
+    font-size: 13px;
+    font-family: sans-serif;
+    fill: black;
+  }
+  .form-group {
+      text-align:left;
+  }
+  .textdiv {
+      font-family: "Open Sans",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+      padding: 7px;
+      cursor: pointer;
+      overflow:none;
+  }
+  .textdiv .title {
+      font-size: 102%;
+      font-weight: bold;
+      margin-top: 8px;
+      font-size:11px !important;
+  }
+  .textdiv p{
+      line-height: 13px;
+      margin:0 0 4px !important;
+      padding:0px;
+      font-size:10px !important;
+  }
